@@ -2,26 +2,165 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*____left-right containers____*/
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.left_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background-color: #61dafb;
 }
-
-.App-header {
+.right_container {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  height: 100%;
+  width: 60%;
   background-color: #282c34;
-  min-height: 100vh;
+}
+
+.left-header {
+  position: relative;
+  text-align: right;
+  font-size: calc(10px + 2vmin);
+  color: #282c34;
+  margin: 20px 10px;
+}
+
+.right-header {
+  position: relative;
+  text-align: left;
+  font-size: calc(10px + 2vmin);
+  color: #61dafb;
+  margin: 20px 10px;
+}
+
+/*____floor containers____*/
+
+.floorContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+.floorButtonsContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  margin: 150px 0 0 -30px;
+}
+
+.floorButton {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 80px;
+  height: 80px;
+  background-color: #61dafb;
   color: white;
+  font-size: 40px;
+  border-radius: 10px;
+}
+.leftButtons{
+  margin-right: 30px;
+  font-size: 20px;
+}
+
+/*____Elevator containers____*/
+
+.elContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 75px;
+  background-color: #fbe161;
+  color: white;
+  font-size: 40px;
+  border-radius: 10px;
+  margin-left: 110px;
+  padding: 5px;
+  margin-top: -90px
+}
+
+.arrowBlue{
+  cursor: pointer;
+  color: #282c34;
+}
+.arrowsYellow{
+  cursor: pointer;
+  color: #282c34;
+}
+
+.elButtonContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: white;
+  font-size: 40px;
+}
+.elDoorContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  color: #282c34;
+  font-size: 20px;
+  cursor: pointer;
+}
+.elDoor {
+  border: 2px solid #282c34;
+  border-radius: 5px;
+  width: 55px;
+  height: 30px;
+  text-align: center;
+  margin: 5px 10px;
+}
+.selected {
+  opacity: 50%;
+}
+
+.smallItems {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #282c34;
+  margin: 2px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.click {
+  color: #282c34;
+  margin-left: -30px;
+  font-size: 12px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.footer{
+  position: absolute;
+  height: 100%;
+  width: 60%;
+  margin: 40px 0 0 0;
+}
+
+.footer p {
+  position: relative;
+  text-align: left;
+  font-size: 16px;
+  color: #61dafb;
+  margin: 0 10px;
 }
 
 .App-link {

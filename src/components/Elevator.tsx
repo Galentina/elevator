@@ -27,11 +27,7 @@ export const Elevator: FC = () => {
     const changeFloor = () => {
         dispatch(floorAction.setStar (0));
         let floors = storeData.floors;
-        // if (storeData.chosenFloor >= Math.min(...storeData.floors)) {
-        //     floors = floors.filter((el: number) => el < storeData.chosenFloor).sort((a: number, b: number) => a - b);
-        // } else if (storeData.chosenFloor <= Math.min(...storeData.floors)) {
-        //     floors = floors.filter((el: number) => el > storeData.chosenFloor).sort((a: number, b: number) => b - a);
-        // }
+
         dispatch(floorAction.chosenFloor(floors[0]));
         const sleep = (ms: number) => {
             return new Promise(resolve => setTimeout(resolve, ms))

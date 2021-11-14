@@ -87,32 +87,27 @@
   border-radius: 10px;
   margin-left: 110px;
   padding: 5px;
-  margin-top: -90px
+  margin-top: -90px;
+  transition: transform 6s ease-in-out;
 }
 
 .transit-1{
-  transition: transform 6s ease-in-out;
   transform: translateY(-100px);
   }
 
 .transit-2{
-  transition: transform 6s ease-in-out;
   transform: translateY(-200px);
 }
 .transit-3{
-  transition: transform 6s ease-in-out;
   transform: translateY(-300px);
 }
 .transit-4{
-  transition: transform 6s ease-in-out;
   transform: translateY(-400px);
 }
 .transit-5{
-  transition: transform 6s ease-in-out;
   transform: translateY(-500px);
 }
 .transit-0{
-  transition: transform 6s ease-in-out;
   transform: translateY(0);
 }
 .arrowBlue{

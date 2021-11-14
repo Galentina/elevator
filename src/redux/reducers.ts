@@ -8,7 +8,7 @@ const initialState: IState = {
     direction: 'up',
     doorC: false,
     doorO: true,
-    star: 0,
+    star: 0
 }
 
 export const floorReducer = (state = initialState, action: IFloorAction) => {

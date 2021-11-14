@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { floorSelector } from './redux/floorSelector';
 import { Elevator } from './components/Elevator';
@@ -9,9 +9,7 @@ function App() {
     const storeData = useSelector(floorSelector)
 
     //________"Open door" and "change arrows color" function________
-
     const elDirFloor = (floor: number, dir: string) => {
-        const elevatorItem = document.getElementById('elevator') as HTMLDivElement;
         const arrowUp = document.getElementById(`arrowUp${floor}`) as HTMLDivElement;
         const arrowDown = document.getElementById(`arrowDown${floor}`) as HTMLDivElement;
         (dir==='up') ? arrowUp.style.color = '#fbe161' : arrowDown.style.color = '#fbe161';
@@ -21,8 +19,7 @@ function App() {
         dispatch(floorAction.setDirection(dir));
         dispatch(floorAction.changeO(false));
         dispatch(floorAction.changeC(true));
-        elevatorItem.style.transform = `translateY(-${floor*100}px)`
-        elevatorItem.style.transition = `transform ${floor*6}s ease-in-out)`
+        dispatch(floorAction.chosenFloor(floor))
         setTimeout(()=>{
             arrowUp.style.color = '#282c34';
             arrowDown.style.color = '#282c34';

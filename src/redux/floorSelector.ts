@@ -1,7 +1,16 @@
 
 
 
-export const floorSelector = (state: { elevator: number[],  floors: any, chosenFloor: number, direction: string }) => {
+export const floorSelector = (
+    state: {
+        elevator: number[],
+        floors: any,
+        chosenFloor: number,
+        direction: string,
+        doorO: boolean,
+        doorC: boolean,
+        star: number,
+    }) => {
 
     return {
         elevator: state.floors.elevator,
@@ -11,5 +20,5 @@ export const floorSelector = (state: { elevator: number[],  floors: any, chosenF
         doorO: state.floors.doorO,
         doorC: state.floors.doorC,
         star: state.floors.star,
-    };
+    }
 };

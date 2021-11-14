@@ -42,5 +42,5 @@ export const floorAction = Object.freeze({
             type: floorTypes.setStar,
             payload: data,
         }
-    }
+    },
 });

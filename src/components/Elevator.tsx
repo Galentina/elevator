@@ -2,12 +2,14 @@ import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { floorSelector } from '../redux/floorSelector';
 import { floorAction } from '../redux/actions';
+import './../theme/styles.scss'
 
 export const Elevator: FC = () => {
     const dispatch = useDispatch()
     const storeData = useSelector(floorSelector)
     const doorO = storeData.doorO;
     const doorC = storeData.doorC
+    const chosenFloor = storeData.chosenFloor;
 
     //_______________________Creating movement list__________________________
 
@@ -20,11 +22,10 @@ export const Elevator: FC = () => {
             dispatch(floorAction.changeC(true));
         }
     }
-
+    let floor = `elContainer transit-${chosenFloor}`;
     //_______________________________Movement between floors________________________________
     const changeFloor = () => {
         dispatch(floorAction.setStar (0));
-        const elevatorItem = document.getElementById('elevator') as HTMLDivElement;
         let floors = storeData.floors;
         if (storeData.chosenFloor >= Math.min(...storeData.floors)) {
             floors = floors.filter((el: number) => el < storeData.chosenFloor).sort((a: number, b: number) => a - b);
@@ -33,10 +34,9 @@ export const Elevator: FC = () => {
         }
         dispatch(floorAction.chosenFloor(floors[0]));
         for (let i = 0; i < floors.length; i++) {
+            dispatch(floorAction.chosenFloor(floors[i]))
             dispatch(floorAction.changeO(false));
             dispatch(floorAction.changeC(true));
-            elevatorItem.style.transition = `transform ${floors[i] * 6}s ease-in-out)`;
-            elevatorItem.style.transform = `translateY(-${floors[i] * 100}px)`;
             dispatch(floorAction.chosenFloor(floors[i]));
             dispatch(floorAction.changeO(true));
             dispatch(floorAction.changeC(false));
@@ -51,8 +51,8 @@ export const Elevator: FC = () => {
     // __________________________________Elevator body____________________________________
     return (
         <>
-            <div id={'elevator'} style={{ transition: `transform 7s ease-in-out`}}
-                 className='elContainer'>
+            <div id={'elevator'}
+                 className={floor}>
                 <div className='elButtonContainer'>
                     {smallButtons}
                 </div>

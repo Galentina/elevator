@@ -90,6 +90,31 @@
   margin-top: -90px
 }
 
+.transit-1{
+  transition: transform 6s ease-in-out;
+  transform: translateY(-100px);
+  }
+
+.transit-2{
+  transition: transform 6s ease-in-out;
+  transform: translateY(-200px);
+}
+.transit-3{
+  transition: transform 6s ease-in-out;
+  transform: translateY(-300px);
+}
+.transit-4{
+  transition: transform 6s ease-in-out;
+  transform: translateY(-400px);
+}
+.transit-5{
+  transition: transform 6s ease-in-out;
+  transform: translateY(-500px);
+}
+.transit-0{
+  transition: transform 6s ease-in-out;
+  transform: translateY(0);
+}
 .arrowBlue{
   cursor: pointer;
   color: #282c34;
@@ -153,6 +178,7 @@
   height: 100%;
   width: 60%;
   margin: 40px 0 0 0;
+
 }
 
 .footer p {

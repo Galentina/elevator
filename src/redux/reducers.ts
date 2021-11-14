@@ -13,11 +13,26 @@ const initialState: IState = {
 
 export const floorReducer = (state = initialState, action: IFloorAction) => {
     switch (action.type) {
+
         case floorTypes.getFloors: {
-            const newFloors = [...state.floors, action.payload]
+                        let dir;
+            const newFloors = [...state.floors, action.payload];
+                        const sum = newFloors.reduce((a: number, b: number) => a + b);
+            if (state.chosenFloor === 0) dir = 'up';
+            else if (state.chosenFloor === 5) dir = 'down';
+            else if (state.direction === '') {
+                (sum/newFloors.length > state.chosenFloor) ? dir = 'up' : dir = 'down';
+            }
+            else dir = state.direction;
+            if (state.direction ==='up') {
+                newFloors.sort((a: number, b: number) => a - b)
+            } else if (state.direction ==='down') {
+                newFloors.sort((a: number, b: number) => b - a)
+            }
             return {
                 ...state,
-                floors: newFloors,
+                direction: dir,
+                floors: newFloors.filter(el => el !==state.chosenFloor),
             }
         }
         case floorTypes.chosenFloor: {

@@ -1,6 +1,6 @@
 export interface IFloorAction {
     type: string;
-    payload: number | number[];
+    payload: number;
 }
 
 export interface IState {

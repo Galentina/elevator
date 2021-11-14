@@ -15,32 +15,39 @@ export const Elevator: FC = () => {
 
     const star = storeData.star;
     const setFloorList = (floor: number) => {
-        if (floor !== storeData.chosenFloor) {
+        // if (floor !== storeData.chosenFloor) {
             dispatch(floorAction.getFloors(floor));
             dispatch(floorAction.setStar (100));
             dispatch(floorAction.changeO(false));
             dispatch(floorAction.changeC(true));
-        }
+        // }
     }
     let floor = `elContainer transit-${chosenFloor}`;
     //_______________________________Movement between floors________________________________
     const changeFloor = () => {
         dispatch(floorAction.setStar (0));
         let floors = storeData.floors;
-        if (storeData.chosenFloor >= Math.min(...storeData.floors)) {
-            floors = floors.filter((el: number) => el < storeData.chosenFloor).sort((a: number, b: number) => a - b);
-        } else if (storeData.chosenFloor <= Math.min(...storeData.floors)) {
-            floors = floors.filter((el: number) => el > storeData.chosenFloor).sort((a: number, b: number) => b - a);
-        }
+        // if (storeData.chosenFloor >= Math.min(...storeData.floors)) {
+        //     floors = floors.filter((el: number) => el < storeData.chosenFloor).sort((a: number, b: number) => a - b);
+        // } else if (storeData.chosenFloor <= Math.min(...storeData.floors)) {
+        //     floors = floors.filter((el: number) => el > storeData.chosenFloor).sort((a: number, b: number) => b - a);
+        // }
         dispatch(floorAction.chosenFloor(floors[0]));
-        for (let i = 0; i < floors.length; i++) {
-            dispatch(floorAction.changeO(false));
-            dispatch(floorAction.changeC(true));
-            dispatch(floorAction.chosenFloor(floors[i]));
-            dispatch(floorAction.changeO(true));
-            dispatch(floorAction.changeC(false));
+        const sleep = (ms: number) => {
+            return new Promise(resolve => setTimeout(resolve, ms))
         }
-        dispatch(floorAction.resetFloors());
+        const startLoop = async() => {
+            for (let i = 0; i < floors.length; i++) {
+                dispatch(floorAction.changeO(false));
+                dispatch(floorAction.changeC(true));
+                dispatch(floorAction.chosenFloor(floors[i]));
+                dispatch(floorAction.changeO(true));
+                dispatch(floorAction.changeC(false));
+                if (i===floors.length-1) { dispatch(floorAction.setDirection('')); dispatch(floorAction.resetFloors()) };
+                await sleep(6000);
+            }
+        }
+        startLoop();
     }
 
     const smallButtons = storeData.elevator.map((elFloor: number, index: number) =>

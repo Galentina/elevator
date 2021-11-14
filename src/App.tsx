@@ -15,14 +15,17 @@ function App() {
         (dir==='up') ? arrowUp.style.color = '#fbe161' : arrowDown.style.color = '#fbe161';
 
         //________Setting number of floor and direction in store________
-        dispatch(floorAction.setDirection(dir));
+        (storeData.chosenFloor === 5)
+            ? dispatch(floorAction.setDirection("down"))
+            : (storeData.chosenFloor === 0) ? dispatch(floorAction.setDirection("up"))
+            :dispatch(floorAction.setDirection(dir));
         dispatch(floorAction.changeO(false));
         dispatch(floorAction.changeC(true));
         dispatch(floorAction.chosenFloor(floor))
         setTimeout(()=>{
             arrowUp.style.color = '#282c34';
             arrowDown.style.color = '#282c34';
-            dispatch(floorAction.setDirection(''));
+            // dispatch(floorAction.setDirection(''));
             dispatch(floorAction.changeO(true));
             dispatch(floorAction.changeC(false));
         }, 6000);

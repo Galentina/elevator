@@ -34,7 +34,6 @@ export const Elevator: FC = () => {
         }
         dispatch(floorAction.chosenFloor(floors[0]));
         for (let i = 0; i < floors.length; i++) {
-            dispatch(floorAction.chosenFloor(floors[i]))
             dispatch(floorAction.changeO(false));
             dispatch(floorAction.changeC(true));
             dispatch(floorAction.chosenFloor(floors[i]));

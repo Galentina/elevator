@@ -15,7 +15,6 @@ function App() {
         (dir==='up') ? arrowUp.style.color = '#fbe161' : arrowDown.style.color = '#fbe161';
 
         //________Setting number of floor and direction in store________
-        dispatch(floorAction.chosenFloor(floor));
         dispatch(floorAction.setDirection(dir));
         dispatch(floorAction.changeO(false));
         dispatch(floorAction.changeC(true));
